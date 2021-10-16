@@ -8,7 +8,7 @@ namespace ModTemplate
     {
         public void Start()
         {
-            // Plugin startup logic
+            // Mod startup logic
             ModHelper.Console.WriteLine($"{Assembly.GetExecutingAssembly().GetName().Name} loaded");
         }
     }
