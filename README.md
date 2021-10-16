@@ -6,9 +6,8 @@ Use this project as a base for new Outer Wilds mods.
 
 - [Prerequisites](#prerequisites)
 - [How to use this template](#how-to-use-this-template)
+- [Editing Directory.Build.targets](#editing-directorybuildtargets)
 - [Editing ModTemplate.csproj](#editing-modtemplatecsproj)
-  - [`<GameDir>`](#gamedir)
-  - [`<OWMLDir>`](#owmldir)
   - [`<AssemblyName>`](#assemblyname)
   - [`<AuthorName>`](#authorname)
 - [Editing manifest.json](#editing-manifestjson)
@@ -41,33 +40,27 @@ Use this project as a base for new Outer Wilds mods.
 
 1. [Generate your repository from this template](https://github.com/Raicuparta/ow-mod-template/generate);
 2. Clone your new repository to your machine;
-3. Edit `ModTemplate.csproj` (see [Editing ModTemplate.csproj](#editing-modtemplatecsproj) for more info);
-4. Edit `manifest.json` (see [Editing manifest.json](#editing-manifestjson) for more info);
-5. Open `ModTemplate.sln` in Visual Studio (double clicking the `.sln` file should do the trick);
-6. Start writing your mod code in `Mod.cs` ([Read OWML's docs to learn what you can do](https://github.com/amazingalek/owml/wiki/For-modders)).
-7. [Build the mod](#building-the-mod);
-8. [Release the mod](#releasing-the-mod);
+3. Edit `Directory.Build.targets` (see [Editing Directory.Build.targets](#editing-directorybuildtargets) for more info);
+4. Edit `ModTemplate.csproj` (see [Editing ModTemplate.csproj](#editing-modtemplatecsproj) for more info);
+5. Edit `manifest.json` (see [Editing manifest.json](#editing-manifestjson) for more info);
+6. Open `ModTemplate.sln` in Visual Studio (double clicking the `.sln` file should do the trick);
+7. Start writing your mod code in `Mod.cs` ([Read OWML's docs to learn what you can do](https://github.com/amazingalek/owml/wiki/For-modders)).
+8. [Build the mod](#building-the-mod);
+9. [Release the mod](#releasing-the-mod);
 
-## Editing ModTemplate.csproj
+## Editing Directory.Build.targets
 
-Use any text editor for editing this file (Notepad or whatever). The file `ModTemplate.csproj` should have these entries near the top:
+Use any text editor for editing this file (Notepad or whatever). The file Directory.Build.targets should look like this:
 
 ```xml
-    <AssemblyName>Mod</AssemblyName>
-    <AuthorName>AuthorName</AuthorName>
-    <GameDir>C:\Program Files (x86)\Steam\steamapps\common\Outer Wilds\</GameDir>
-    <OWMLDir>$(AppData)OuterWildsModManager\OWML\</OWMLDir>
+  <?xml version="1.0" encoding="utf-8"?>
+  <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+      <GameDir>C:\Program Files (x86)\Steam\steamapps\common\Outer Wilds\</GameDir>
+      <OWMLDir>$(AppData)OuterWildsModManager\OWML\</OWMLDir>
+    </PropertyGroup>
+  </Project>
 ```
-
-You need to replace `AssemblyName`, `AuthorName`, `GameDir`, and `OWMLDir` between the tags. Be careful not to change the tags themselves (the stuff between `< >`, since that will break the file). Remember to restart Visual Studio (or just reload your mod project) if you edit this file, otherwise the changes won't be applied.
-
-#### `<AssemblyName>`
-
-This is the name of your mod.
-
-#### `<AuthorName>`
-
-Your name goes here.
 
 #### `<GameDir>`
 
@@ -76,6 +69,25 @@ This is the directory that contains the game's executable (`OuterWilds.exe`). Do
 #### `<OWMLDir>`
 
 This is the directory that contains `OWML.Launcher.exe`. You can find this directory using the Mod Manager: press the three dots menu button in OWML's row, and select "Show in explorer". Again, don't include the executable in the path;
+
+## Editing ModTemplate.csproj
+
+Use any text editor for editing this file (Notepad or whatever). The file `ModTemplate.csproj` should have these entries near the top:
+
+```xml
+    <AssemblyName>Mod</AssemblyName>
+    <AuthorName>AuthorName</AuthorName>
+```
+
+You need to replace `AssemblyName` and `AuthorName` between the tags. Be careful not to change the tags themselves (the stuff between `< >`, since that will break the file). Remember to restart Visual Studio (or just reload your mod project) if you edit this file, otherwise the changes won't be applied.
+
+#### `<AssemblyName>`
+
+This is the name of your mod.
+
+#### `<AuthorName>`
+
+Your name goes here.
 
 ## Editing manifest.json
 
