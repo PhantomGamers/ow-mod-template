@@ -168,7 +168,7 @@ To make your mod show up in the Mod Manager and in [outerwildsmods.com](https://
 
 ## Troubleshooting
 
-If you open `ModTemplate.csproj`, ensure that `<GameDir>` and `<OWMLDir>` are set to the correct paths.
+If you open `Directory.Build.targets`, ensure that `<GameDir>` and `<OWMLDir>` are set to the correct paths.
 
 `$(GameDir)` is used to find references to the needed dll files in `$(GameDir)\OuterWilds_Data\Managed\**.dll`. If you are having problems with missing references (yellow exclamation mark warning icon in Visual Studio reference list), you should double-check your `.csproj` file, or find the references manually (Right click References in Solution Explorer, select "Add References").
 
